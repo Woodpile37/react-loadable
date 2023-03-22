@@ -15,10 +15,12 @@
     "test": "jest --coverage",
     "build": "babel src -d lib",
     "start": "yarn build && webpack && babel-node example/server.js",
-    "prepare": "yarn build"
+    "prepare": "yarn run snyk-protect && yarn build",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -36,7 +38,7 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "express": "^4.16.4",
     "flow-bin": "^0.83.0",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-test-renderer": "^16.5.2",
@@ -44,5 +46,6 @@
   },
   "peerDependencies": {
     "react": "*"
-  }
+  },
+  "snyk": true
 }
